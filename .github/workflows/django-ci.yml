@@ -2,9 +2,9 @@ name: Django CI
 
 on:
   push:
-    branches: ["*"]
+    branches: ["*"]      # runs on all branches including feature branches
   pull_request:
-    branches: [ main ]
+    branches: [ main ]   # runs on PRs targeting main
 
 jobs:
   build:
@@ -21,16 +21,16 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd my
+          cd my/mysite
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run migrations
         run: |
-          cd my
+          cd my/mysite
           python manage.py migrate
 
       - name: Run tests
         run: |
-          cd my
+          cd my/mysite
           python manage.py test
