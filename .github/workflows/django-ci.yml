@@ -1,13 +1,10 @@
 name: Django CI
 
-# Trigger pipeline on push to any branch
 on:
   push:
-    branches:
-      - "*"         # runs on all branches, including feature branches
+    branches: ["*"]
   pull_request:
-    branches:
-      - main        # still runs on PRs to main
+    branches: [ main ]
 
 jobs:
   build:
@@ -24,11 +21,16 @@ jobs:
 
       - name: Install dependencies
         run: |
+          cd my
           python -m pip install --upgrade pip
-          pip install -r my/requirements.txt
+          pip install -r requirements.txt
 
       - name: Run migrations
-        run: python manage.py migrate
+        run: |
+          cd my
+          python manage.py migrate
 
       - name: Run tests
-        run: python manage.py test
+        run: |
+          cd my
+          python manage.py test
