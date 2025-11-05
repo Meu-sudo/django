@@ -1,9 +1,8 @@
 {
   "dev": {
     "app_function": "mysite.wsgi.application",
-    "aws_region": "us-east-1",
-    "profile_name": "default",
-    "s3_bucket": "YOUR_S3_BUCKET_NAME",
+    "aws_region": "cn-north-1",
+    "s3_bucket": "mysite-zappa-cn-north-1",
     "runtime": "python3.11",
     "timeout_seconds": 30,
     "memory_size": 512,
