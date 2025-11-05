@@ -1,3 +1,14 @@
+name: Django CI
+
+# Trigger pipeline on push to any branch
+on:
+  push:
+    branches:
+      - "*"         # runs on all branches, including feature branches
+  pull_request:
+    branches:
+      - main        # still runs on PRs to main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,3 +32,4 @@ jobs:
 
       - name: Run tests
         run: python manage.py test
+
