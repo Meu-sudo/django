@@ -1,0 +1,5 @@
+Django>=4.2,<5.0
+djangorestframework>=3.14,<4.0   # optional, if using DRF for APIs
+gunicorn>=20.1.0                  # optional, for production server
+python-dotenv>=1.0.0              # optional, for environment variables
+requests
