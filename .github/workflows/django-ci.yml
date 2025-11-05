@@ -3,7 +3,7 @@ name: Django Lambda Deploy
 on:
   push:
     branches:
-      - main       # deploy from main branch
+      - main   # deploy from main branch
 
 jobs:
   test-and-deploy:
@@ -39,5 +39,4 @@ jobs:
           ZAPPA_BUCKET: ${{ secrets.ZAPPA_BUCKET }}
         run: |
           cd my/mysite
-          zappa deploy dev  # first deploy
-          # for subsequent runs, use: zappa update dev
+          zappa deploy dev
