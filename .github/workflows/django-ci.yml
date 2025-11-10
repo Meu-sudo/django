@@ -43,5 +43,6 @@ jobs:
           ZAPPA_BUCKET: ${{ secrets.ZAPPA_BUCKET }}
         run: |
           cd my/mysite/mysite
-          zappa deploy dev --settings_file zappa_settings.json || zappa update dev --settings_file zappa_settings.json
+          zappa update dev --settings_file zappa_settings.json || zappa deploy dev --settings_file zappa_settings.json
+
           
