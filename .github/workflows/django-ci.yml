@@ -9,7 +9,7 @@ jobs:
   test-and-deploy:
     runs-on: ubuntu-latest
 
-    steps:
+    steps: 
       # 1. Checkout the repo
       - name: Checkout code
         uses: actions/checkout@v3

@@ -1,6 +1,7 @@
 {
   "dev": {
     "app_function": "mysite.wsgi.application",
+    "role_arn": "arn:aws-cn:iam::043669873748:role/Test_Application_UpdateRecords",
     "aws_region": "cn-north-1",
     "s3_bucket": "mysite-zappa-cn-north-1",
     "runtime": "python3.11",
