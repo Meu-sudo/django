@@ -38,7 +38,7 @@ jobs:
           python manage.py migrate --noinput
           python manage.py test
 
-      # 5. Deploy to AWS Lambda (China Region)
+      # 5. De
       - name: Deploy to Lambda with Zappa
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
