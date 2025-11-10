@@ -13,21 +13,6 @@ jobs:
       # 1. Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
-name: Django Lambda CI/CD (China Region)
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  test-and-deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      # 1. Checkout code
-      - name: Checkout code
-        uses: actions/checkout@v3
 
       # 2. Set up Python
       - name: Set up Python
@@ -69,43 +54,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
         run: |
-          cd my/mysite
-          source venv/bin/activate
-          cd mysite
-          zappa update dev --settings_file zappa_settings.json || zappa deploy dev --settings_file zappa_settings.json
-
-      # 2. Set up Python
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-
-      # 3. Create virtual environment & install dependencies
-      - name: Setup Virtualenv and Install Dependencies
-        run: |
-          cd my/mysite
-          python -m venv venv
-          source venv/bin/activate
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install zappa
-
-      # 4. Run Django migrations & tests
-      - name: Run migrations and tests
-        run: |
-          cd my/mysite
-          source venv/bin/activate
-          python manage.py migrate --noinput
-          python manage.py test
-
-      # 5. De
-      - name: Deploy to Lambda with Zappa
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}   # Must be AWS_DEFAULT_REGION
-          run: |
-          aws sts get-caller-identity --region $AWS_DEFAULT_REGION
           cd my/mysite
           source venv/bin/activate
           cd mysite
